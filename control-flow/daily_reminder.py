@@ -1,18 +1,31 @@
-task = input("Enter your task:")
+task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-if priority == "high" and time_bound == "yes":
-    print(f"Reminder: Your high-priority task '{task}' is time-bound. Please address it immediately!")
-elif priority == "high" and time_bound == "no":
-    print(f"Reminder: Your high-priority task '{task}' needs attention soon.")
-elif priority == "medium" and time_bound == "yes":
-    print(f"Reminder: Your medium-priority task '{task}' is time-bound. Try to complete it on time.")
-elif priority == "medium" and time_bound == "no":
-    print(f"Reminder: Your medium-priority task '{task}' can be scheduled flexibly.")
-elif priority == "low" and time_bound == "yes":
-    print(f"Reminder: Your low-priority task '{task}' is time-bound. Don't forget to do it eventually.")
-elif priority == "low" and time_bound == "no":
-    print(f"Reminder: Your low-priority task '{task}' can be done at your convenience.")
-else:
-    print("Invalid input. Please ensure priority is high/medium/low and time bound is yes/no.")
+match priority:
+    case "high":
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a high priority task that requires immediate attention today!")
+        elif time_bound == "no":
+            print(f"Reminder: '{task}' is a high priority task. Try to complete it soon.")
+        else:
+            print("Invalid input for time-bound. Please enter yes or no.")
+
+    case "medium":
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a medium priority task that should be completed on time.")
+        elif time_bound == "no":
+            print(f"Reminder: '{task}' is a medium priority task. You can schedule it flexibly.")
+        else:
+            print("Invalid input for time-bound. Please enter yes or no.")
+
+    case "low":
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a low priority task but time-bound. Don’t forget to do it eventually.")
+        elif time_bound == "no":
+            print(f"Note: '{task}' is a low priority task. Consider completing it when you have free time.")
+        else:
+            print("Invalid input for time-bound. Please enter yes or no.")
+
+    case _:
+        print("Invalid priority. Please enter high, medium, or low.")
