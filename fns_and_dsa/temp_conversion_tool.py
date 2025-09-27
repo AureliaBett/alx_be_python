@@ -12,14 +12,20 @@ while True:
             return temperature_in_fahrenheit
     
 
-    temperature =int(input("Enter the temperature to convert: "))
-    CorF = str(input('Is this temperature in Celsius or Fahrenheit? (C/F): '))
-    if CorF == "F":
-        convert_to_celsius(CorF)
-        break
+    temperature_input =input("Enter the temperature to convert: ")
+    
+    if temperature_input.isdigit():
+        temperature = int(temperature_input)
+         
+        CorF = str(input('Is this temperature in Celsius or Fahrenheit? (C/F): '))
+        if CorF == "F":
+            convert_to_celsius(CorF)
+            break
         
-    elif CorF == "C":
-        convert_to_fahrenheit(CorF)
-        break
-    else:
-        print("You did not enter neither C nor F")
+        elif CorF == "C":
+            convert_to_fahrenheit(CorF)
+            break
+        else:
+            print("You did not enter neither C nor F")
+    else: 
+         print("Invalid temperature. Please enter a numeric value.")
