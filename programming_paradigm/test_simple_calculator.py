@@ -2,65 +2,40 @@ import unittest
 from simple_calculator import SimpleCalculator;
 
 class Test_SimpleCalculator(unittest.TestCase):
+ 
+    def setUp(self):
+        self.calc = SimpleCalculator()
+ 
     #add
-    def test_add_positive(self):
-        result = SimpleCalculator().add(5, 6)
-        self.assertEqual(result, 11)
-       
-    def test_add_negative(self):
-        result = SimpleCalculator().add(5, -6)
-        self.assertEqual(result, -1)
-        
-    def test_add_sameNumber_differentsigns(self):
-        result = SimpleCalculator().add(-5, 5)
-        self.assertEqual(result, 0)
+    def test_addition(self):
+        self.assertEqual(self.calc.add(5, 6), 11)
+        self.assertEqual(self.calc.add(5, -6), -1)
+        self.assertEqual(self.calc.add(5, -5), 0)
+
        
     
     #subtract
-    def test_subtract_a_greater(self):
-        result = SimpleCalculator().subtract(6, 5)
-        self.assertEqual(result, 1)
-       
-    def test_subtract_b_greater(self):
-        result = SimpleCalculator().subtract(6, 7)
-        self.assertEqual(result, -1)
-       
-    def test_subtract_b_negative(self):
-        result = SimpleCalculator().subtract(6, -5)
-        self.assertEqual(result, 11)
-
-
+    def subtraction(self):
+        self.assertEqual(self.calc.subtract(5, 6), -1)
+        self.assertEqual(self.calc.subtract(5, -6), 11)
+        self.assertEqual(self.calc.subtract(6, -5), 1)
+ 
+ 
     #multiply
-    def test_multiply_OneNegative(self):
-        result = SimpleCalculator().multiply(6, -5)
-        self.assertEqual(result, -30)
+    def test_multiplication(self):
+        self.assertEqual(self.calc.multiply(5, 6), 30)
+        self.assertEqual(self.calc.multiply(-5, -6), 30)
+        self.assertEqual(self.calc.multiply(5, -5), -25)
 
-    def test_multiply_bothNegative(self):
-        result = SimpleCalculator().multiply(-6, -5)
-        self.assertEqual(result, 30)
 
-    def test_multiply_positive(self):
-        result = SimpleCalculator().multiply(6, 5)
-        self.assertEqual(result, 30)
-    
     #Divide
     try:
-        def test_divide_aGreater(self):
-            result = SimpleCalculator().divide(6, 3)
-            self.assertEqual(result, 2)
-
-        def test_divide_bGreater(self):
-            result = float(SimpleCalculator().divide(3, 6))
-            self.assertEqual(result, 0.5)
-
-        def test_divide_(self):
-            result = SimpleCalculator().divide(6, 3)
-            self.assertEqual(result, 2)
-
-        def test_divide_byZero(self):
-            result = SimpleCalculator().divide(6, 0)
-            self.assertEqual(result, None)
-
+        def test_dision(self):
+            self.assertEqual(self.calc.divide(6, 3), 2)
+            self.assertEqual(self.calc.divide(3, 6), 0.5)
+            self.assertEqual(self.calc.divide(5, -5), -1)
+            self.assertEqual(self.calc.divide(5, 0), None)
+      
 
     finally:
         print('complete')
