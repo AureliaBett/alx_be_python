@@ -30,7 +30,7 @@ class Test_SimpleCalculator(unittest.TestCase):
 
     #Divide
     try:
-        def test_dision(self):
+        def test_divide(self):
             self.assertEqual(self.calc.divide(6, 3), 2)
             self.assertEqual(self.calc.divide(3, 6), 0.5)
             self.assertEqual(self.calc.divide(5, -5), -1)
