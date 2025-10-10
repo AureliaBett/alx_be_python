@@ -14,7 +14,7 @@ class Book:
         print(f"Deleting {self.title}")
 
 
-
+#main.py
         from book_class import Book
 
 def main():
